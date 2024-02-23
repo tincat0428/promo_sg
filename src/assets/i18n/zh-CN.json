@@ -1,0 +1,8 @@
+{
+    "EventTime": "活动时间",
+    "Disable": "此活动已结束",
+    "Round": "场次",
+    "TournamentTitle": "第 {{i}} 阶段锦标赛",
+    "TermsConditions": "规则及条款",
+    "Footer": "Spadegaming © {{year}} 保留一切权利。"
+}
