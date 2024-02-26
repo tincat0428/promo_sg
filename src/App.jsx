@@ -6,10 +6,8 @@ import Forbidden from './page/Forbidden'
 import Promo from './page/Promo';
 import Catalog from './page/Catalog';
 import { ThemeContext } from './store/theme-context';
-import { LoadingProvider } from './store/loading-context';
 import { withTranslation } from "react-i18next";
 import './service/i18n'
-import i18n from './service/i18n';
 
 function App() {
   const [themeCode, setThemeCode] = useState('');
@@ -22,19 +20,17 @@ function App() {
   }, [themeCode])
 
   return (
-    <LoadingProvider>
-      <ThemeContext.Provider value={{ themeCode, setThemeCode }} >
-        <BrowserRouter>
-          <Routes>
-            <Route path="/">
-              <Route index element={<Forbidden />} />
-              <Route path="/:slug" element={<Promo />} />
-              <Route path="/doucumentFiles" element={<Catalog />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </ThemeContext.Provider>
-    </LoadingProvider>
+    <ThemeContext.Provider value={{ themeCode, setThemeCode }} >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/">
+            <Route index element={<Forbidden />} />
+            <Route path="/:slug" element={<Promo />} />
+            <Route path="/doucumentFiles" element={<Catalog />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ThemeContext.Provider>
   )
 }
 

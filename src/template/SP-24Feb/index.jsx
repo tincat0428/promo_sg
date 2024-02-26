@@ -8,10 +8,6 @@ import coin_r from './assets/images/deco/coin_r.webp';
 import dino from './assets/images/deco/dino.webp';
 import rocketman from './assets/images/deco/rocketman.webp';
 import { useEffect, useRef, useState } from 'react';
-import { t } from 'i18next';
-import Modal from '../../component/modal';
-import { useDispatch, useSelector } from 'react-redux';
-import { showModal } from '../../component/modal/modalSlice';
 import RWD from '../../service/RWD';
 import tag_cn from './assets/images/banner_img/icon_cn.webp'
 import tag_en from './assets/images/banner_img/icon_en.webp'

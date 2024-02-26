@@ -47,7 +47,7 @@ const locale = () => {
         }
     }
 
-    return { getDefaultLang }
+    return { getDefaultLang, localeName }
 }
 
 export default locale;

@@ -13,7 +13,8 @@ const CurrTable = ({ htmlString }) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlString, 'text/html');
         const table = doc.querySelector('table');
-        setHeadingElem(doc.querySelector('h3').innerHTML)
+        if (!table) return
+        setHeadingElem(doc.querySelector('h3').innerHTML);
         setTableData(tableToJson(table))
 
     }, [htmlString])

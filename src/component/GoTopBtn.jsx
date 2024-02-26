@@ -23,7 +23,6 @@ const GoTopBtn = () => {
     }, []);
 
     const scrollToTop = () => {
-        console.log('work')
         window.scrollTo({
             top: 0,
             behavior: 'smooth'

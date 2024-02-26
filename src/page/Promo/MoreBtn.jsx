@@ -1,7 +1,7 @@
 import { t } from "i18next"
 import { useDispatch } from "react-redux"
-import { showModal } from "../../component/modal/modalSlice"
-import Modal from "../../component/modal"
+import { showModal } from "../../component/Modal/modalSlice"
+import Modal from "../../component/Modal"
 
 const MoreBtn = ({ html }) => {
     const dispatch = useDispatch()

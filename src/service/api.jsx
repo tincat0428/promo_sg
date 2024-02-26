@@ -6,7 +6,7 @@ const api = () => {
     const fetchData = (apiUrl) => {
         let responseClone;
 
-        return fetch(HOST_URL + apiUrl + `?t=${timestape}`)
+        return fetch(HOST_URL + apiUrl)
             .then(response => {
                 responseClone = response.clone();
                 return responseClone.json()

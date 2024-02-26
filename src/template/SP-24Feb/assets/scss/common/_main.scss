@@ -572,7 +572,7 @@ $date-item-border-radius: 5px;
     text-align: left;
     font-size: 14px;
     line-height: 20px;
-    font-family: "Poppins";
+    font-family: "Roboto";
 
     .date {
         &::after {
@@ -615,31 +615,6 @@ $date-item-border-radius: 5px;
 }
 
 /* points table*/
-.point-item {
-    flex: 1;
-
-    .head,
-    .value {
-        @include flex(center);
-        @include font-size(13);
-        height: to-rem(42);
-        flex: 1;
-    }
-
-    .head {
-        background: #3d1880;
-        color: #fff;
-    }
-
-    .value {
-        background: #f0e6ff;
-        color: #212046;
-        font-weight: bold;
-    }
-
-    @include flex;
-}
-
 .points-block {
     .table {
         width: 100% !important;
