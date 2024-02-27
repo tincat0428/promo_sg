@@ -1,18 +1,20 @@
-import { datePad } from '../../service/util';
+import RWD from '../../service/RWD';
+import { datePad, formatMonth } from '../../service/util';
 
 const DateHeading = ({ dateData }) => {
+    const { isMobile } = RWD()
     const { startDate } = dateData.startGroup[0]
     const { endDate } = dateData.endGroup[dateData.endGroup.length - 1]
 
     const timeForm = (timeStr) => {
-        const date = new Date(timeStr);
-        return `${date.getMonth() + 1}/${date.getDate()} ${datePad(date.getHours())}:${datePad(date.getMinutes())}`
+        const time = new Date(timeStr);
+        return `${time.getDate()} ${formatMonth(time)} ${time.getFullYear()}`
     }
 
     if (!dateData) return null
 
     return (
-        <h3 className="event-period">
+        <h3 className="heading-date" data-aos="fade-up" data-aos-delay={isMobile ? "0" : "900"}>
             <strong>
                 {timeForm(startDate)} - {timeForm(endDate)}
             </strong>&nbsp;

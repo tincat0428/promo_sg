@@ -344,6 +344,7 @@ main {
 /* currency table */
 .currency-block {
     position: relative;
+    
     .table {
         width: 100%;
         border-radius: 5px;
@@ -355,10 +356,6 @@ main {
     table {
         width: 100%;
         border-collapse: collapse;
-
-        .table-index {
-            width: 62px;
-        }
 
         thead {
             color: #fff;

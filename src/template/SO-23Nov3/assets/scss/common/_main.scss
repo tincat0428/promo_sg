@@ -160,7 +160,7 @@ main {
                 width: 15%;
             }
 
-            &:nth-child(3) {
+            &[rowspan] {
                 width: 50%;
             }
         }
@@ -191,7 +191,7 @@ main {
                 background: #d1d1d1;
             }
 
-            &:nth-child(3) {
+            &[rowspan] {
                 background: #e2e2e2;
                 padding: to-rem(27);
                 text-align: center;

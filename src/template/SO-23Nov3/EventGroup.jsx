@@ -1,6 +1,6 @@
 
 import RWD from "../../service/RWD"
-import { checkExpired, datePad } from "../../service/util";
+import { checkExpired, datePad, formatMonth } from "../../service/util";
 import { useEffect, useState } from "react";
 
 const EventGroup = ({ eventList }) => {
@@ -21,7 +21,7 @@ const EventGroup = ({ eventList }) => {
 
     const date_template = (timeStr) => {
         const date = new Date(timeStr);
-        return `${date.getMonth() + 1}/${date.getDate()}`
+        return `${date.getDate()} ${formatMonth(date, true)}`
     }
 
     const time_template = (timeStr) => {
@@ -34,9 +34,13 @@ const EventGroup = ({ eventList }) => {
     return (
         <div className="tournament-main">
             {eventList.map((item, i) => (
-                <div key={i} className={`date-item ${activeEvent == i ? 'active' : ''}`} >
-                    <strong className="date-item-time">{date_template(item.startDate)} ~ {date_template(item.endDate)}</strong>
-                    <strong className="date-item-date">{time_template(item.startDate)} ~ {time_template(item.endDate)}</strong>
+                <div key={i} className={`event-item ${activeEvent == i ? 'active' : ''}`}
+                    data-aos="fade-up" data-aos-delay={100 * i}>
+                    <strong className="date">{date_template(item.startDate)} ~ {date_template(item.endDate)}</strong>
+                    <div className="time-box">
+                        <span className="gmt">GMT+8</span>
+                        <strong className="time">{time_template(item.startDate)} ~ {time_template(item.endDate)}</strong>
+                    </div>
                 </div>
             ))}
         </div>

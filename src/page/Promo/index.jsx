@@ -61,6 +61,7 @@ const Promo = () => {
             return navigate('/')
         }
         setPageData(data);
+        document.title = data.heading
     }
 
     return (
