@@ -77,7 +77,7 @@ const TemplateComponent = ({ pageData }) => {
                 <div className="container">
                     <h2 data-translate="EventTime"></h2>
                     <EventGroup eventList={mergedArray(pageData.eventList)} />
-                    <div id="pageContent" dangerouslySetInnerHTML={{ __html: textingEffect(pageData.content) }}></div>
+                    <div dangerouslySetInnerHTML={{ __html: textingEffect(pageData.content) }}></div>
                     <div dangerouslySetInnerHTML={{ __html: textingEffect(`<h2>${t('TermsConditions')}</h2>`) }}></div>
                     <div className="info-content" dangerouslySetInnerHTML={{ __html: textingEffect(pageData.terms_and_conditions) }}></div>
                 </div>

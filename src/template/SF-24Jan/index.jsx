@@ -9,6 +9,7 @@ import bubbles from './assets/js/bubbles'
 import { htmlImg, mergedArray } from '../../service/util';
 import MoreBtn from '../../page/Promo/MoreBtn';
 import EventGroup from './EventGroup';
+import DateHeading from './DateHeading';
 
 const TemplateComponent = ({ pageData }) => {
     const { isMobile } = RWD()
@@ -40,13 +41,11 @@ const TemplateComponent = ({ pageData }) => {
                     {!isMobile && <div className="bn-money" data-device="web">
                         <img src={HOST_URL + pageData.images.money} />
                     </div>}
-                    <strong className="bn-date" id="headingDate">
-                        2024 年 1月 29 日
-                        -
-                        2024 年 4月 22 日
-                    </strong>
-                    <strong className="bn-time" id="headingTime">12:00 PM - 11:59 AM <span className="gmt">[GMT+8]</span></strong>
-                    <EventGroup eventList={mergedArray(pageData.eventList)}/>
+                    <DateHeading dateData={{
+                        startGroup: pageData.eventList[0],
+                        endGroup: pageData.eventList[pageData.eventList.length - 1]
+                    }} />
+                    <EventGroup eventList={mergedArray(pageData.eventList)} />
                     <div className="container">
                         <div className="tournament-info" dangerouslySetInnerHTML={{ __html: sec[0] }}></div>
                         <div className='points-block' dangerouslySetInnerHTML={{ __html: sec[1] }}></div>
