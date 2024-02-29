@@ -47,7 +47,8 @@ const Promo = () => {
     const importComponent = async () => {
         if (!pageData) return
         setThemeCode(pageData.theme);
-        const module = await import(/* @vite-ignore */ `../../template/${pageData.theme}`)
+        const path = "../../template/" + pageData.theme
+        const module = await import(path)
         const TemplateComponent = module.default;
         setImportedComponent(<TemplateComponent pageData={pageData} />);
         dispatch(setLoading(false))

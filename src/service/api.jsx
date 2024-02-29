@@ -1,12 +1,14 @@
 
-const HOST_URL = 'http://localhost:1337'
+const DEFAULT_HOST = 'https://spade-event.com';
+const ON_LOCALHOST = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === ""
+const HOST_URL = (ON_LOCALHOST ? DEFAULT_HOST : window.location.origin) + '/dev/data/';
 
 const api = () => {
     const timestape = new Date().getTime()
     const fetchData = (apiUrl) => {
         let responseClone;
 
-        return fetch(HOST_URL + apiUrl)
+        return fetch(HOST_URL + apiUrl + `?t=${timestape}`)
             .then(response => {
                 responseClone = response.clone();
                 return responseClone.json()
@@ -19,15 +21,15 @@ const api = () => {
     }
 
     const getPromoList = () => {
-        return fetchData('/api/getPromoList'+ `?t=${timestape}`)
+        return fetchData('promoList.json')
     }
 
     const getLangList = (slug) => {
-        return fetchData(`/api/getLocaleList/${slug}`+ `?t=${timestape}`)
+        return fetchData(`${slug}/localeList.json`)
     }
 
     const getPageData = (slug, locale) => {
-        return fetchData(`/api/getPromo/${slug}?locale=${locale}`+ `&t=${timestape}`)
+        return fetchData(`${slug}/${locale}.json`)
     }
 
     return { getPageData, getLangList, getPromoList, HOST_URL }
