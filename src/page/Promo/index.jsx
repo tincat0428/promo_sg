@@ -11,8 +11,11 @@ import SideLink from "./SideLink";
 import GoTopBtn from "../../component/GoTopBtn";
 import { setLoading } from "../../component/Loader/loaderSlice";
 import { useDispatch } from "react-redux";
+import { Helmet } from "react-helmet-async";
+import SEO from "../../component/SEO";
 
 const Promo = () => {
+    const { HOST_URL } = api();
     const params = useParams();
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -62,12 +65,18 @@ const Promo = () => {
             return navigate('/')
         }
         setPageData(data);
-        document.title = data.heading
     }
 
     return (
         <>
             <Loader />
+            {pageData && <>
+                <h1>{pageData.heading}</h1>
+                <SEO title={pageData.heading}
+                    description={pageData.heading}
+                    image={HOST_URL + pageData.og_img}
+                    type="article" />
+            </>}
             <Header langList={langList} />
             {importedComponent}
             {pageData && <SideLink data={pageData.side_link} />}

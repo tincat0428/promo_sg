@@ -7,7 +7,7 @@ import { setLoading } from "../component/Loader/loaderSlice";
 import Loader from "../component/Loader";
 import { useDispatch } from "react-redux";
 import api from '../service/api'
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Catalog = () => {
     const { getPromoList, HOST_URL } = api()

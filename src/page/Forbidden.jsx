@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import '../assets/scss/page/forbidden.scss'
 import { ThemeContext } from '../store/theme-context'
-import { Helmet } from 'react-helmet'
+import { Helmet } from 'react-helmet-async'
 
 const Forbidden = () => {
     const { setThemeCode } = useContext(ThemeContext)
