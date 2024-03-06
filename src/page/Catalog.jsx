@@ -7,6 +7,7 @@ import { setLoading } from "../component/Loader/loaderSlice";
 import Loader from "../component/Loader";
 import { useDispatch } from "react-redux";
 import api from '../service/api'
+import { Helmet } from "react-helmet";
 
 const Catalog = () => {
     const { getPromoList, HOST_URL } = api()
@@ -28,6 +29,10 @@ const Catalog = () => {
 
     return (
         <>
+            <Helmet>
+                <title>'目錄'</title>
+                <meta name="description" content='SG 目錄' />
+            </Helmet>
             <Loader />
             <header className="catalog-header">
                 <div className="catalog-nav">

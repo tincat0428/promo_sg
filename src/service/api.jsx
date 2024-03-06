@@ -1,7 +1,8 @@
 
 const DEFAULT_HOST = 'https://spade-event.com';
 const ON_LOCALHOST = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === ""
-const HOST_URL = (ON_LOCALHOST ? DEFAULT_HOST : window.location.origin) + '/dev/data/';
+// const HOST_URL = (ON_LOCALHOST ? DEFAULT_HOST : window.location.origin) + '/dev/data/';
+const HOST_URL = DEFAULT_HOST + '/dev/data/';
 
 const api = () => {
     const timestape = new Date().getTime()

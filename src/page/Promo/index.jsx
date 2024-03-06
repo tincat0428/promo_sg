@@ -25,6 +25,7 @@ const Promo = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
+        console.log('promo')
         setLoading(true);
         (async () => {
             // 取得語系列表
@@ -47,8 +48,7 @@ const Promo = () => {
     const importComponent = async () => {
         if (!pageData) return
         setThemeCode(pageData.theme);
-        const path = "../../template/" + pageData.theme
-        const module = await import(path)
+        const module = await import(`../../template/${pageData.theme}/index.jsx`)
         const TemplateComponent = module.default;
         setImportedComponent(<TemplateComponent pageData={pageData} />);
         dispatch(setLoading(false))

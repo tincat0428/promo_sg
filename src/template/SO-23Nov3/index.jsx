@@ -65,7 +65,7 @@ const TemplateComponent = ({ pageData }) => {
                         <img data-aos="fade-up" data-aos-delay="300" src={HOST_URL + pageData.images.money} />
                     </div>
                     {pageData.images.other && <div className="bn-info">
-                        <img data-aos="fade-up" data-aos-delay="600" src={HOST_URL + pageData.images.other[0].url} />
+                        <img data-aos="fade-up" data-aos-delay="600" src={HOST_URL + pageData.images.other[0]} />
                     </div>}
                 </>}
                 <DateHeading dateData={{
