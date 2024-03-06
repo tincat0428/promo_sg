@@ -10,7 +10,7 @@ const seoPrerender = ({ routes, selector, base = '' }) => {
         name: "viteSeoPrerender",
         async closeBundle() {
 
-            // fs.rmSync(OUTPUT_DIR, { recursive: true, force: true });
+            if (!routes) return;
 
             const app = express();
 

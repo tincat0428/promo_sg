@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 import seoPrerender from './prerender'
 
-console.log(process.argv)
+const routesArg = process.env.npm_config_routes
+const routes = routesArg ? routesArg.split(',').map(item => item.trim()) : null;
+console.log("routes: ", routes)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +15,7 @@ export default defineConfig({
     seoPrerender({
       base: '/dev/event/',
       selector: 'main',
-      routes: ["test", "doucumentFiles", "playandwin_Feb_May"]
+      routes
     })
   ],
 })
