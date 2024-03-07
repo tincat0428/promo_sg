@@ -31,7 +31,7 @@ const TemplateComponent = ({ pageData }) => {
 
     return (
         <>
-            <img className="top-bg" src={bg} />
+            {!isMobile && <img className="top-bg" src={bg} />}
             <main>
                 <canvas className="bubbles"></canvas>
                 <section className="banner">

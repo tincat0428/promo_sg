@@ -11,7 +11,6 @@ import SideLink from "./SideLink";
 import GoTopBtn from "../../component/GoTopBtn";
 import { setLoading } from "../../component/Loader/loaderSlice";
 import { useDispatch } from "react-redux";
-import { Helmet } from "react-helmet-async";
 import SEO from "../../component/SEO";
 
 const Promo = () => {

@@ -33,7 +33,7 @@ const EventGroup = ({ eventList }) => {
         <div className='tournament-block'>
             <Swiper
                 loop
-                initialSlide={activeEvent + 1}
+                initialSlide={(activeEvent + 1) / (isMobile ? 2 : 1)}
                 modules={[Navigation, Pagination, Grid]}
                 slidesPerView={isMobile ? 2 : 4}
                 slidesPerGroup={isMobile ? 2 : 4}
