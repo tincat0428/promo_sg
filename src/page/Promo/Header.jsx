@@ -1,5 +1,6 @@
 import { connect, useSelector } from "react-redux";
-import logo from "../../assets/images/spade_logo.png"
+import logo_sg from "../../assets/images/spade_logo.png"
+import logo_fs from "../../assets/images/logo_fs.svg"
 import { Link } from "react-router-dom";
 import RWD from "../../service/RWD";
 import i18n from "../../service/i18n";
@@ -28,14 +29,16 @@ const Header = ({ langList }) => {
     }, [])
 
     const changeLoclae = () => {
-        if(isMobile) setShowMenu(false);
+        if (isMobile) setShowMenu(false);
         document.body.classList.remove(i18n.language);
     }
 
     return (
-        <header className="header">
+        <header className={`header ${process.env.brand}`}>
             <div className="nav">
-                <h2 className="nav-logo"><img src={logo} alt="" /></h2>
+                <h2 className={`nav-logo ${process.env.brand}`}>
+                    <img src={(process.env.brand == 'SG') ? logo_sg : logo_fs} />
+                </h2>
                 <div ref={ref} className="language-dropdown dropdown">
                     {isMobile && <div className="default dropdown-btn" onClick={() => setShowMenu(true)}>
                         <i className={`flag ${i18n.language}`}></i>

@@ -29,13 +29,6 @@ function App() {
             <Route index element={<Forbidden />} />
             <Route path="/:slug" element={<Promo />} />
             <Route path="/doucumentFiles" element={<Catalog />} />
-            <Route path="/test" element={<main>
-              <h2>Hellow word</h2>
-              <Helmet>
-                <title>Hellow word</title>
-                <meta name="description" content='Hellow word' />
-              </Helmet>
-            </main>} />
           </Routes>
         </BrowserRouter>
       </ThemeContext.Provider>

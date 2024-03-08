@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
-import logo from "../assets/images/logo.svg"
+import logo_sg from "../assets/images/logo_sg.svg"
+import logo_fs from "../assets/images/logo_fs.svg"
 import '../assets/scss/page/catalog.scss'
 import { useContext, useEffect, useState } from "react"
 import { ThemeContext } from "../store/theme-context";
@@ -30,13 +31,14 @@ const Catalog = () => {
     return (
         <>
             <Helmet>
-                <title>'目錄'</title>
-                <meta name="description" content='SG 目錄' />
+                <title>目錄</title>
             </Helmet>
             <Loader />
             <header className="catalog-header">
                 <div className="catalog-nav">
-                    <h2 className="catalog-nav-logo"><img src={logo} alt="" /></h2>
+                    <h2 className="catalog-nav-logo">
+                        <img src={(process.env.brand == 'SG') ? logo_sg : logo_fs} alt="" />
+                    </h2>
                 </div>
             </header>
             <main>

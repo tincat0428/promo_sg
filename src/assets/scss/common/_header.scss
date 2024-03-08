@@ -1,13 +1,20 @@
 .header {
-    background-color: #121215;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: var(--header-height, 54px);
     z-index: 3;
-    -webkit-box-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
+
+    &.SG {
+        background-color: #121215;
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
+    }
+
+    &.FS {
+        background: #ffffff;
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5019607843);
+    }
 }
 
 .nav {
@@ -44,9 +51,11 @@
 .nav-logo {
     height: 38px;
 
-    img {
-        margin-top: 3px;
-        max-height: 100%;
+    &.SG {
+        img {
+            margin-top: 3px;
+            max-height: 100%;
+        }
     }
 }
 
