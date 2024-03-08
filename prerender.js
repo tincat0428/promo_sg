@@ -26,6 +26,13 @@ const seoPrerender = ({ routes, selector, base = '' }) => {
                 const page = await browser.newPage()
                 for (const key of routes) {
                     // 需渲染的路由   
+                    await page.evaluateOnNewDocument(() => {
+                        Object.defineProperty(navigator, "language", {
+                            get: function() {
+                                return "en-US";
+                            }
+                        });
+                    })
                     await page.goto("http://localhost:3000" + base + key)
                     await page.setViewport({ width: 1024, height: 768 })
                     await page.waitForSelector(selector, { timeout: 10000 });
@@ -37,7 +44,7 @@ const seoPrerender = ({ routes, selector, base = '' }) => {
                     fs.writeFileSync(filePath, content)
                     console.log('[Tina] prerender /' + key)
                 }
-                console.log('[Tina] SEO prerender 完成 ´-ω-)b')
+                console.log('[Tina] SEO prerender Finish! ´-ω-)b')
                 await browser.close();
                 process.exit(0)
             })
