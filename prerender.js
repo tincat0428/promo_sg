@@ -3,7 +3,7 @@ import fs from "fs"
 import path from 'path';
 import express from 'express'
 
-const seoPrerender = ({ routes, selector, base = '', outDir = 'dist' }) => {
+const seoPrerender = ({ routes, selector, base = '/', outDir = 'dist' }) => {
     const DIST_DIR = path.join(__dirname, outDir);
     const OUTPUT_DIR = path.join(__dirname, outDir);
 
@@ -26,7 +26,7 @@ const seoPrerender = ({ routes, selector, base = '', outDir = 'dist' }) => {
                 const browser = await puppeteer.launch()
                 const page = await browser.newPage()
                 for (const key of routes) {
-                    console.log('[Tina] '+base + key +'-------------')
+                    console.log('[Tina] prerender ' + base + key)
                     // 需渲染的路由   
                     await page.evaluateOnNewDocument(() => {
                         Object.defineProperty(navigator, "language", {
@@ -44,7 +44,6 @@ const seoPrerender = ({ routes, selector, base = '', outDir = 'dist' }) => {
                         fs.mkdirSync(path.join(OUTPUT_DIR, key), { recursive: true });
                     }
                     fs.writeFileSync(filePath, content)
-                    console.log('[Tina] prerender /' + key)
                 }
                 console.log('[Tina] SEO prerender Finish! ´-ω-)b')
                 await browser.close();
