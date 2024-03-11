@@ -26,6 +26,7 @@ export default defineConfig(({ mode }) => {
   }
 
   return {
+    build: { outDir: env.OUT_DIR },
     base: env.BASE,
     define: processEnvValues,
     plugins: [
@@ -33,6 +34,7 @@ export default defineConfig(({ mode }) => {
       seoPrerender({
         base: env.BASE,
         selector: 'main',
+        outDir: env.OUT_DIR,
         routes
       })
     ],
