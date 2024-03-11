@@ -545,32 +545,25 @@ $tournament_bg: #6a0001;
         width: 100%;
         text-align: center;
         table-layout: fixed;
-        border-collapse: collapse;
+        border-collapse: separate;
+        border-spacing: 1px 1px;
+    }
+    th,
+    .head {
+        grid-column: 2 span;
+        text-align: center;
+        @include font(15, 42, bold);
+        background: #6a0001;
+        color: #ffffff;
+    }
 
-        th {
-            grid-column: 2 span;
-            text-align: center;
-            background: #330000;
-            @include font(15, 42, bold);
-            color: #fff;
-        }
-
-        td {
-            @include font-size(13);
-            height: to-rem(42);
-            border: solid 1px var(--bg);
-
-            &:nth-of-type(odd) {
-                background: #6a0001;
-                color: #ffffff;
-            }
-
-            &:nth-of-type(even) {
-                background: #ffece3;
-                color: #212046;
-                font-weight: bold;
-            }
-        }
+    td,
+    .value {
+        @include font-size(13);
+        height: to-rem(42);
+        background: #ffece3;
+        color: #212046;
+        font-weight: bold;
     }
 }
 

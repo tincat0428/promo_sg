@@ -3,39 +3,27 @@ import RWD from "../../service/RWD"
 import { checkExpired, datePad, formatAMPM, formatMonth, getOrdinalSuffix } from "../../service/util";
 import { Fragment, useEffect, useState } from "react";
 import i18n from "../../service/i18n";
+import img from "./assets/images/deco/round_default.webp"
+import img_active from "./assets/images/deco/round.webp"
 
 const DateItem = ({ active, index, data, changeTab }) => {
-    const { isMobile } = RWD()
 
-    const DateItemBox = ({ timeStr }) => {
-        const time = new Date(timeStr);
-        return (
-            <div className="date-item-box">
-                <div className="date">{datePad(time.getMonth() + 1)} / {datePad(time.getDate())}</div>
-                {isMobile && <div className="time">{formatAMPM(time)}</div>}
-            </div>
-        )
-    }
-
-    const timeForm = (timeStr) => {
-        const time = new Date(timeStr)
-        return formatAMPM(time)
+    const eventItemDate_template = (timeStr) => {
+        let time = new Date(timeStr);
+        return `
+        ${datePad(time.getMonth() + 1)} / ${datePad(time.getDate())}
+        `
     }
 
     return (
-        <div className={`date-item ${active ? 'active-date' : ''}`}>
-
-            <div className="list-order">
-                <span className="round">{t('Round')} </span>
-                <div className="number">{index + 1}</div>
-                {!isMobile &&
-                    <span className="time">{timeForm(data.startDate)} - {timeForm(data.endDate)}</span>}
+        <div className={`date-item ${active ? 'active' : ''}`}>
+            <img className="default" src={img} />
+            <img className="active-img" src={img_active} />
+            <div className="date-item-box">
+                {eventItemDate_template(data.startDate)} - {eventItemDate_template(data.endDate)}
             </div>
-
-            <div className="date-content">
-                <DateItemBox timeStr={data.startDate} />
-                <span className="date-dash">~</span>
-                <DateItemBox timeStr={data.endDate} />
+            <div className="list-order">
+                {t('Round')} {index + 1}
             </div>
         </div>)
 }
@@ -47,23 +35,18 @@ const Tab = ({ status, data, i, handelClick }) => {
         const time = new Date(timeStr);
 
         switch (i18n.language) {
-            case 'zh-CN':
-                return `${time.getFullYear()} 年 ${formatMonth(time, true)} ${time.getDate()} 日`
-            case 'id-ID':
-                return `${time.getDate()} ${formatMonth(time)} ${time.getFullYear()}`
             case 'th-TH':
-                return `${time.getDate()} ${formatMonth(time)} ${time.getFullYear() + 543}`
+                return `${time.getDate()} ${formatMonth(time, true)} ${time.getFullYear() + 543}`
             case 'ko-KR':
                 return `${time.getFullYear()}년 ${formatMonth(time, true)} ${time.getDate()}일`
             default:
-                return <>{time.getDate()}<sup>{getOrdinalSuffix(time.getDate())}</sup>{formatMonth(time, true)}. {time.getFullYear()}</>
+                return `${datePad(time.getMonth() + 1)}/${(time.getDate())}/${time.getFullYear()}`
         }
     }
 
     return (
         <button className={`tournament-tab ${status} ${isMobile ? 'mobile' : ''}`}
             onClick={() => (status != 'disable') && handelClick(i)}>
-            <strong className="heading">{t('TournamentTitle', { i: i + 1 })}</strong>
             <div className="disable-mask">{t('Disable')}</div>
             <div className="date-box">
                 <div className="date">
@@ -128,7 +111,6 @@ const EventGroup = ({ eventList }) => {
                     <div className={`tournament-content ${(activeEvent.group == i) ? 'active' : ''}
                     ${(activeEvent.index[0] > i) ? 'disable' : ''}`}>
                         <div className="tournament-item">
-                            <span className="tournament-item-gmt">(GMT+8)</span>
                             {group.map((item, index) => (
                                 <DateItem key={index} index={index} data={item}
                                     active={activeEvent.index[0] == i && activeEvent.index[1] == index} />

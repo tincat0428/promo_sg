@@ -16,6 +16,7 @@ import EventGroup from './EventGroup';
 import CurrTable from '../../page/Promo/CurrTable';
 import DateHeading from './DateHeading';
 import MoreBtn from '../../page/Promo/MoreBtn';
+import PointTable from '../../page/Promo/PointTable';
 
 const TemplateComponent = ({ pageData }) => {
     const { isMobile } = RWD()
@@ -85,7 +86,7 @@ const TemplateComponent = ({ pageData }) => {
                         <EventGroup eventList={pageData.eventList} />
                         <div className="tournament-info" dangerouslySetInnerHTML={{ __html: sec[0] }}></div>
                     </div>
-                    <div className='points-block' dangerouslySetInnerHTML={{ __html: sec[1] }}></div>
+                    <PointTable htmlString={sec[1]} columeType />
                     <CurrTable htmlString={sec[sec.length - 1]} />
                     <MoreBtn html={pageData.terms_and_conditions} />
                 </div>

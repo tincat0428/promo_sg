@@ -114,3 +114,27 @@
 .curr-table {
     position: relative;
 }
+
+
+.points-colume-table {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    .head,
+    .value {
+        @include flex(center);
+        flex: 1;
+    }
+
+    .box {
+        @include flex;
+        border-left: solid 0.5px transparent;
+        border-bottom: solid 0.5px transparent;
+
+        &:nth-child(1) {
+            grid-column: 2 span;
+            display: block;
+        }
+    }
+}

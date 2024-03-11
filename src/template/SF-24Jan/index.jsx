@@ -10,6 +10,7 @@ import { htmlImg, mergedArray } from '../../service/util';
 import MoreBtn from '../../page/Promo/MoreBtn';
 import EventGroup from './EventGroup';
 import DateHeading from './DateHeading';
+import PointTable from '../../page/Promo/PointTable';
 
 const TemplateComponent = ({ pageData }) => {
     const { isMobile } = RWD()
@@ -48,7 +49,7 @@ const TemplateComponent = ({ pageData }) => {
                     <EventGroup eventList={mergedArray(pageData.eventList)} />
                     <div className="container">
                         <div className="tournament-info" dangerouslySetInnerHTML={{ __html: sec[0] }}></div>
-                        <div className='points-block' dangerouslySetInnerHTML={{ __html: sec[1] }}></div>
+                        <PointTable htmlString={sec[1]} columeType />
                         {(sec[2] && sec[2].match(/img/g) !== null) && <div className="game-list-block" dangerouslySetInnerHTML={{ __html: htmlImg(sec[2]) }}></div>}
                         <CurrTable htmlString={sec[sec.length - 1]} />
                         <MoreBtn html={pageData.terms_and_conditions} />

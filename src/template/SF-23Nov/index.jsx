@@ -10,6 +10,7 @@ import { htmlImg, mergedArray } from '../../service/util';
 import MoreBtn from '../../page/Promo/MoreBtn';
 import EventGroup from './EventGroup';
 import DateHeading from './DateHeading';
+import PointTable from '../../page/Promo/PointTable';
 
 const TemplateComponent = ({ pageData }) => {
     const { isMobile } = RWD()
@@ -47,7 +48,7 @@ const TemplateComponent = ({ pageData }) => {
                             }} />
                             <EventGroup eventList={mergedArray(pageData.eventList)} />
                         </div>
-                        <div className='points-block' dangerouslySetInnerHTML={{ __html: sec[1] }}></div>
+                        <PointTable htmlString={sec[1]} />
                         {(sec[2] && sec[2].match(/img/g) !== null) && <div className="gameBlock" dangerouslySetInnerHTML={{ __html: htmlImg(sec[2]) }}></div>}
                         <div className="currency-block">
                             <CurrTable htmlString={sec[sec.length - 1]} />

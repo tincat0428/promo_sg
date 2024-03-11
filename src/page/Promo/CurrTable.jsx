@@ -22,18 +22,19 @@ const CurrTable = ({ htmlString }) => {
     const tableToJson = (table) => {
         const data = [];
         const headers = [];
-        const title = table.rows[0].cells[1].innerHTML
-
+        const title = table.querySelector('th[colspan]')?.innerHTML || null;
+        const hasTitle = title != null
 
         // 遍歷表格的標題行，將標題存儲到 headers 數組中
         headers[0] = table.rows[0].cells[0].innerHTML.replace(/ /gi, '')
 
-        for (let i = 0; i < table.rows[1].cells.length; i++) {
-            headers[i + 1] = table.rows[1].cells[i].innerHTML.replace(/ /gi, '');
+        const startIndex = hasTitle ? 1 : 0;
+        for (let i = 0; i < table.rows[startIndex].cells.length; i++) {
+            headers[i + (startIndex)] = table.rows[startIndex].cells[i].innerHTML.replace(/ /gi, '');
         }
 
         // 遍歷表格的數據行，將每一行的數據存儲到 data 數組中
-        for (let i = 2; i < table.rows.length; i++) {
+        for (let i = (hasTitle ? 2 : 1); i < table.rows.length; i++) {
             const tableRow = table.rows[i];
             const rowData = [];
 
@@ -65,7 +66,7 @@ const CurrTable = ({ htmlString }) => {
                         <thead>
                             <tr>
                                 <th rowSpan="2">{tableData.headers[0]}</th>
-                                <th className="table-heading">{tableData.title}</th>
+                                {tableData.title && <th className="table-heading">{tableData.title}</th>}
                             </tr>
                             <tr><th>{tableData.headers[activeIndex]}</th></tr>
                         </thead>

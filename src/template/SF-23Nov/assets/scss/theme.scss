@@ -232,6 +232,7 @@ footer {
     min-height: 25vw;
     position: relative;
     overflow: hidden;
+    z-index: 0;
 }
 
 .bn-bg {
@@ -277,6 +278,7 @@ main {
     background: bottom/cover url(../images/img_web_bg.webp);
     margin-top: -15%;
     overflow: initial;
+    z-index: 1;
 }
 
 .mobile main {
@@ -618,23 +620,19 @@ p > strong {
         font-size: 0.875rem;
         text-align: center;
         table-layout: fixed;
-
-        th {
-            background: #035bc0;
-            color: #f5f0f0;
-            height: 2.625rem;
-            font-weight: initial;
-        }
-        td {
-            background: #09203c;
-            color: #fff;
-            height: 2.625rem;
-        }
-
-        @at-root .mobile #{&} {
-            // display: grid;
-            // grid-template-columns: repeat(2, 1fr);
-        }
+    }
+    th,
+    .head {
+        background: #035bc0;
+        color: #f5f0f0;
+        height: 2.625rem;
+        font-weight: initial;
+    }
+    td,
+    .value {
+        background: #09203c;
+        color: #fff;
+        height: 2.625rem;
     }
 }
 

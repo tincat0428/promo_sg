@@ -10,9 +10,9 @@ $break_point: $smallIpad;
 
 // reset
 & {
-    --bg: #0f0f0f;
+    --bg: #02042b;
     --header-height: 54px;
-    font-family: "Roboto", "微软雅黑", sans-serif;
+    font-family: "Sansita", "微软雅黑", sans-serif;
 
     @include RWD($smallWeb) {
         font-size: 14px;

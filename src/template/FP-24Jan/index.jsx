@@ -1,6 +1,5 @@
 import './assets/scss/app.scss';
-import "../../assets/fonts/roboto/style.css";
-import "../../assets/fonts/agencyfb/style.css";
+import "../../assets/fonts/Sansita/style.css";
 import api from "../../service/api";
 import bg from './assets/images/banner_img/bg.webp';
 import bg_deco from './assets/images/banner_img/title_character.webp';
@@ -11,12 +10,12 @@ import EventGroup from './EventGroup';
 import CurrTable from '../../page/Promo/CurrTable';
 import DateHeading from './DateHeading';
 import MoreBtn from '../../page/Promo/MoreBtn';
+import PointTable from '../../page/Promo/PointTable';
 
 const TemplateComponent = ({ pageData }) => {
     const { isMobile } = RWD()
     const { HOST_URL } = api();
     const [sec, setSec] = useState([]);
-    const [deco, setDeco] = useState([])
 
     useEffect(() => {
         parseContent();
@@ -60,7 +59,7 @@ const TemplateComponent = ({ pageData }) => {
                         <EventGroup eventList={pageData.eventList} />
                         <div className="tournament-info" dangerouslySetInnerHTML={{ __html: sec[0] }}></div>
                     </div>
-                    <div className='points-block' dangerouslySetInnerHTML={{ __html: sec[1] }}></div>
+                    <PointTable htmlString={sec[1]}/>
                     <CurrTable htmlString={sec[sec.length - 1]} />
                     <MoreBtn html={pageData.terms_and_conditions} />
                 </div>

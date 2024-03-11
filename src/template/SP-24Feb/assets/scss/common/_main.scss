@@ -616,42 +616,58 @@ $date-item-border-radius: 5px;
 
 /* points table*/
 .points-block {
-    .table {
-        width: 100% !important;
-        max-width: $block-max-width;
-        margin: 0 auto to-rem(70);
-    }
-
     table {
         width: 100%;
         text-align: center;
         table-layout: fixed;
         border-collapse: collapse;
+    }
+    .points-colume-table,
+    .table {
+        max-width: $block-max-width;
+        margin: 0 auto to-rem(70);
+        width: 100% !important;
+        text-align: center;
+    }
+    .box:nth-child(1) {
+        background: #460fab;
+        height: to-rem(42);
+        @include flex(center);
+        gap: 0.5em;
+        border-bottom: solid 1px var(--bg);
 
-        th {
-            grid-column: 2 span;
-            text-align: center;
-            background: #460fab;
-            @include font(15, 42, bold);
+        .head,
+        .value {
+            display: inline;
+            height: initial;
+            background: initial;
             color: #fff;
+            flex: initial;
+            border: none;
+            @include font(16)
         }
 
-        td {
-            @include font-size(13);
-            height: to-rem(42);
-            border: solid 1px var(--bg);
-
-            &:nth-of-type(odd) {
-                background: #3d1880;
-                color: #fff;
-            }
-
-            &:nth-of-type(even) {
-                background: #f0e6ff;
-                color: #212046;
-                font-weight: bold;
+        .head {
+            &::after {
+                content: ":";
             }
         }
+    }
+    th,
+    .head {
+        background: #3d1880;
+        color: #fff;
+        @include font(14, 16, bold);
+        height: to-rem(42);
+        font-weight: 300;
+    }
+
+    td,
+    .value {
+        @include font(13, 16, bold);
+        height: to-rem(42);
+        background: #f0e6ff;
+        color: #212046;
     }
 }
 
