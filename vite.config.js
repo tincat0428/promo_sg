@@ -24,16 +24,16 @@ export default defineConfig(({ mode }) => {
       {},
     )
   }
-  console.log('[Tina] BASE: ' + env.BASE)
+  console.log('[Tina] BASE: ' + env.BASE_HREF)
 
   return {
     build: { outDir: env.OUT_DIR },
-    base: env.BASE,
+    base: env.BASE_HREF,
     define: processEnvValues,
     plugins: [
       react(),
       seoPrerender({
-        base: env.BASE,
+        base: env.BASE_HREF,
         selector: 'main',
         outDir: env.OUT_DIR,
         routes
