@@ -24,6 +24,7 @@ export default defineConfig(({ mode }) => {
       {},
     )
   }
+  console.log('[Tina] BASE: ' + env.BASE)
 
   return {
     build: { outDir: env.OUT_DIR },
