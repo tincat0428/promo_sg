@@ -6,13 +6,13 @@ import express from 'express'
 const seoPrerender = ({ routes, selector, base = '', outDir = 'dist' }) => {
     const DIST_DIR = path.join(__dirname, outDir);
     const OUTPUT_DIR = path.join(__dirname, outDir);
-    
+
     return {
         name: "viteSeoPrerender",
         async closeBundle() {
-            
+
             if (!routes) return;
-            
+
             const app = express();
 
             app.use(express.static(path.join(DIST_DIR)));
@@ -26,6 +26,7 @@ const seoPrerender = ({ routes, selector, base = '', outDir = 'dist' }) => {
                 const browser = await puppeteer.launch()
                 const page = await browser.newPage()
                 for (const key of routes) {
+                    console.log(base + key, '-------------')
                     // 需渲染的路由   
                     await page.evaluateOnNewDocument(() => {
                         Object.defineProperty(navigator, "language", {
