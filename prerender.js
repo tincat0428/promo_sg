@@ -37,7 +37,7 @@ const seoPrerender = ({ routes, selector, base = '/', outDir = 'dist' }) => {
                     })
                     await page.goto("http://localhost:3000" + base + key)
                     await page.setViewport({ width: 1024, height: 768 })
-                    await page.waitForSelector(selector, { timeout: 10000 });
+                    await page.waitForSelector(selector, { timeout: 60000 });
                     const content = await page.content()
                     const filePath = path.join(OUTPUT_DIR, key, 'index.html')
                     if (!fs.existsSync(path.join(OUTPUT_DIR, key))) {
