@@ -45,7 +45,7 @@ const seoPrerender = ({ routes, selector, base = '/', outDir = 'dist' }) => {
                     }
                     fs.writeFileSync(filePath, content)
                 }
-                console.log('[Tina] SEO prerender Finish! ´-ω-)b')
+                console.log(`[Tina] SEO prerender Finish! ´-ω-)b`)
                 await browser.close();
                 process.exit(0)
             })
