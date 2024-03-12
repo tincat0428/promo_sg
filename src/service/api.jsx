@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 const DEFAULT_HOST = process.env.HOST_URL;
 const ON_LOCALHOST = location.hostname === "localhost" || location.hostname === "127.0.0.1" || location.hostname === ""
-const HOST_URL = (ON_LOCALHOST ? DEFAULT_HOST : window.location.origin) + process.env.API_BASE;
+// const HOST_URL = (ON_LOCALHOST ? DEFAULT_HOST : window.location.origin) + process.env.API_BASE;
+const HOST_URL = DEFAULT_HOST + process.env.API_BASE;
 
 const api = () => {
     const timestape = new Date().getTime()
