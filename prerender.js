@@ -26,7 +26,7 @@ const seoPrerender = ({ routes, selector, base = '/', outDir = 'dist' }) => {
                 const browser = await puppeteer.launch()
                 const page = await browser.newPage()
                 for (const key of routes) {
-                    console.log('[Tina] ', base + key)
+                    // console.log('[Tina] ', base + key)
                     // 需渲染的路由   
                     await page.evaluateOnNewDocument(() => {
                         Object.defineProperty(navigator, "language", {
